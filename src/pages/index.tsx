@@ -1,10 +1,10 @@
 import HeroCmp from '../components/hero.cmp'
-import Layout from '../components/Layout'
+import LayoutCmp from '../components/layout.cmp'
 
 export default function Home() {
   return (
-    <Layout>
+    <LayoutCmp>
       <HeroCmp />
-    </Layout>
+    </LayoutCmp>
   )
 }

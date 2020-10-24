@@ -2,7 +2,7 @@ import React from 'react'
 import HeaderCmp from './header.cmp'
 import FooterCmp from './footer.cmp'
 
-export default function Layout(props) {
+export default function LayoutCmp(props) {
   return (
     <div className="h-screen">
       <HeaderCmp />
