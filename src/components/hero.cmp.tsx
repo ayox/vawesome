@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 
 const animateBgClass = 'bg-gradient-to-r from-blue-400  to-orange-500 via-purple-500 animate-gradient-x'
+const animateLineClass = 'bg-gradient-to-l from-red-600 to-pink-500 via-yellow-300 animate-gradient-x'
 
 export default function HeroCmp() {
   const [value, setValue] = useState('')
@@ -13,10 +14,12 @@ export default function HeroCmp() {
       <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
         <div className="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
           <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-            <span className="text-red-500">View</span> your
+            <div className="inline-block text-red-500">View</div> your
             <span className={`bg-clip-text text-transparent ${animateBgClass}`}> Awesome </span>
             lists
+            <div className={`${animateLineClass} h-2 w-full rounded-full`} />
           </h1>
+
           <p className="mb-8 leading-relaxed">
             A new way to view awesome repositories, you can type the github link below to view the list of awesome things 😎.
             <br />
