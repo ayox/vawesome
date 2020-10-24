@@ -6,3 +6,7 @@
 
 /* purgecss end ignore */
 @import 'tailwindcss/utilities';
+
+.item:hover {
+  @apply  .bg-gradient-to-r .from-blue-400  .to-orange-500 .via-purple-500 .animate-gradient-x ;
+}
