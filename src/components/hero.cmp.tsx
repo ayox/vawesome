@@ -18,9 +18,16 @@ export default function HeroCmp() {
             lists
           </h1>
           <p className="mb-8 leading-relaxed">
-            A new to view awesome repositories, you can type your github link below to view the list of awesome things 😎.
+            A new way to view awesome repositories, you can type the github link below to view the list of awesome things 😎.
+            <br />
+            Try this one : <code className="p-2 bg-gray-200 text-sm ">https://github.com/aniftyco/awesome-tailwindcss</code>
           </p>
-          <div className="flex w-full md:justify-start justify-center">
+          <form
+            onSubmit={() => {
+              router.push(`/view/${value.replace('https://github.com/', '')}`)
+            }}
+            className="flex w-full md:justify-start justify-center"
+          >
             <input
               className="bg-gray-100 rounded mr-4 border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 lg:w-full  md:w-full"
               placeholder="e.g. https://github.com/aniftyco/awesome-tailwindcss"
@@ -31,14 +38,13 @@ export default function HeroCmp() {
               }}
             />
             <button
-              onClick={() => {
-                router.push(`/view/${value.replace('https://github.com/', '')}`)
-              }}
-              className="inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg"
+              disabled={!value}
+              type="submit"
+              className="disabled:opacity-75 disabled:cursor-not-allowed inline-flex text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded text-lg"
             >
               View
             </button>
-          </div>
+          </form>
           <p className="mt-4 text-gray-500 text-sm">* things still under construction so expect bugs 🐛 around. </p>
         </div>
 
