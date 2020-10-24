@@ -9,33 +9,34 @@ export async function getStaticProps({ params }) {
 
   const list = convertMDtoJSON(md)
 
-  let awesomeList = await Promise.all(
-    list.map(async (title) => {
-      const items = await Promise.all(
-        title.items.map(async ({ name, url }) => {
-          let meta = {}
-          if (url.includes('https://github.com/')) {
-            const res = await fetch(` https://api.github.com/repos/${url.replace('https://github.com/', '')}`, {
-              headers: {
-                Accept: 'application/vnd.github.v3+json',
-              },
-            })
-            meta = await res.json()
-          }
-          return {
-            name,
-            url,
-            meta,
-          }
-        })
-      )
-      return { name: title.name, items }
-    })
-  )
+  // let awesomeList = await Promise.all(
+  //   list.map(async (title) => {
+  //     const items = await Promise.all(
+  //       title.items.map(async ({ name, url }) => {
+  //         let meta = {}
+  //         if (url.includes('https://github.com/')) {
+  //           const res = await fetch(` https://api.github.com/repos/${url.replace('https://github.com/', '')}`, {
+  //             headers: {
+  //               Accept: 'application/vnd.github.v3+json',
+  //             },
+  //           })
+  //           meta = await res.json()
+  //         }
+  //         return {
+  //           name,
+  //           url,
+  //           meta,
+  //         }
+  //       })
+  //     )
+  //     return { name: title.name, items }
+  //   })
+  // )
 
   return {
     props: {
-      awesomeList: awesomeList,
+      // awesomeList: awesomeList,
+      awesomeList: list,
     },
   }
 }
