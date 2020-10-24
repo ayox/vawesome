@@ -21,9 +21,9 @@ export default function HeroCmp() {
           </h1>
 
           <p className="mb-8 leading-relaxed">
-            A new way to view awesome repositories, you can type the github link below to view the list of awesome things 😎.
+            A new way to view awesome repositories, you can type the github link below to view the list of awesome things 😎. Try this one :
             <br />
-            Try this one : <code className="p-2 bg-gray-200 text-sm ">https://github.com/aniftyco/awesome-tailwindcss</code>
+            <code className="p-2 bg-gray-200 text-sm ">https://github.com/aniftyco/awesome-tailwindcss</code>
           </p>
           <form
             onSubmit={(event) => {
