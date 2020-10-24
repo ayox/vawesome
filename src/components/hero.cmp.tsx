@@ -23,7 +23,8 @@ export default function HeroCmp() {
             Try this one : <code className="p-2 bg-gray-200 text-sm ">https://github.com/aniftyco/awesome-tailwindcss</code>
           </p>
           <form
-            onSubmit={() => {
+            onSubmit={(event) => {
+              event.preventDefault()
               router.push(`/view/${value.replace('https://github.com/', '')}`)
             }}
             className="flex w-full md:justify-start justify-center"
