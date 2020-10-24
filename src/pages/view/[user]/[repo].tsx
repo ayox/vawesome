@@ -6,9 +6,36 @@ export async function getStaticProps({ params }) {
   const { user, repo } = params
   const res = await fetch(getReadMe(user, repo))
   const md = await res.text()
+
+  const list = convertMDtoJSON(md)
+
+  let awesomeList = await Promise.all(
+    list.map(async (title) => {
+      const items = await Promise.all(
+        title.items.map(async ({ name, url }) => {
+          let meta = {}
+          if (url.includes('https://github.com/')) {
+            const res = await fetch(` https://api.github.com/repos/${url.replace('https://github.com/', '')}`, {
+              headers: {
+                Accept: 'application/vnd.github.v3+json',
+              },
+            })
+            meta = await res.json()
+          }
+          return {
+            name,
+            url,
+            meta,
+          }
+        })
+      )
+      return { name: title.name, items }
+    })
+  )
+
   return {
     props: {
-      awesomeList: convertMDtoJSON(md),
+      awesomeList: awesomeList,
     },
   }
 }
@@ -54,8 +81,8 @@ export default function Repo({ awesomeList }: any) {
   const { user, repo } = router.query
   return (
     <Layout>
-      <div className="px-24 w-full flex justify-center flex-col">
-        <code className="bg-gray-200 text-center p-2 ml-2">
+      <div className="px-24 w-full flex justify-center items-center flex-col">
+        <code className="w-3/12 bg-gray-200 text-center p-2 ml-2">
           {user}/{repo}
         </code>
         <AwesomeList list={awesomeList} />
@@ -63,7 +90,6 @@ export default function Repo({ awesomeList }: any) {
     </Layout>
   )
 }
-const classNameHover = `bg-gradient-to-r from-blue-400  to-orange-500 via-purple-500 animate-gradient-x`
 
 function AwesomeList({ list }) {
   if (!list) return <div />

@@ -17,7 +17,9 @@ export default function HeroCmp() {
             <span className={`bg-clip-text text-transparent ${animateBgClass}`}> Awesome </span>
             lists
           </h1>
-          <p className="mb-8 leading-relaxed">Type your github link below to view it.</p>
+          <p className="mb-8 leading-relaxed">
+            A new to view awesome repositories, you can type your github link below to view the list of awesome things 😎.
+          </p>
           <div className="flex w-full md:justify-start justify-center">
             <input
               className="bg-gray-100 rounded mr-4 border border-gray-400 focus:outline-none focus:border-indigo-500 text-base px-4 lg:w-full  md:w-full"
@@ -37,7 +39,9 @@ export default function HeroCmp() {
               View
             </button>
           </div>
+          <p className="mt-4 text-gray-500 text-sm">* things still under construction so expect bugs 🐛 around. </p>
         </div>
+
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
           <img
             className="object-cover object-center rounded"
